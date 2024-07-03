@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label>
+            <input type="checkbox" id="age" name="age" required>
+            I am 13 years or older
+        </label><br>
+
+        <label>
+            <input type="checkbox" id="tos" name="tos" required>
+            I agree to the TOS and Privacy rules
+        </label><br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
