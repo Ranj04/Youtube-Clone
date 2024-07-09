@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Video</title>
-    <script defer src="script.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
 </head>
 <body>
-    <form id="postVideoForm">
-        <label for="videoTitle">Title:</label>
-        <input type="text" id="videoTitle" name="videoTitle" required><br>
-
-        <label for="videoURL">Video URL:</label>
-        <input type="url" id="videoURL" name="videoURL" required><br>
-
-        <button type="submit">Post Video</button>
-    </form>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="registration.html">Register</a></li>
+            <li><a href="postvideo.html">Post Video</a></li>
+            <li><a href="viewpost.html">View Post</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Post Video</h2>
+        <form action="submit_video" method="post" enctype="multipart/form-data">
+            <label for="title">Post Title:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required><br>
+            <label for="video">Video:</label>
+            <input type="file" id="video" name="video" accept="video/*" required><br>
+            <label>
+                <input type="checkbox" name="aup" required> I accept the Acceptable Use Policy
+            </label><br>
+            <button type="submit">Post Video</button>
+        </form>
+    </section>
 </body>
 </html>
