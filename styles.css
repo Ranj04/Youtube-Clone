@@ -45,13 +45,14 @@ nav ul li a {
     text-decoration: none;
     padding: 0.5rem;
     transition: background 0.3s, color 0.3s;
-    border: 1px solid #0000FF; /* Blue border */
+    border: 2px solid transparent; /* Blue border on hover */
     border-radius: 4px;
 }
 
 nav ul li a:hover {
     background: #555;
     color: #fff;
+    border: 2px solid #0000FF; /* Blue border */
 }
 
 /* Section styling */
@@ -87,7 +88,7 @@ form input[type="password"],
 form input[type="file"] {
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: 1px solid #0000FF; /* Blue border */
+    border: 2px solid #0000FF; /* Blue border */
     border-radius: 4px;
     width: 100%;
 }
@@ -96,14 +97,15 @@ form button {
     padding: 0.7rem;
     background: #333;
     color: #fff;
-    border: 1px solid #0000FF; /* Blue border */
+    border: 2px solid #0000FF; /* Blue border */
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, border 0.3s;
 }
 
 form button:hover {
     background: #555;
+    border: 2px solid #0000FF; /* Blue border */
 }
 
 /* Footer styling */
