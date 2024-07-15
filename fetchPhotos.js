@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 photoDiv.className = 'photo';
 
                 const img = document.createElement('img');
-                img.src = photo.thumbnailUrl;
+                img.src = photo.url;
                 img.alt = photo.title;
                 img.style.width = '150px';
                 img.style.height = '150px';

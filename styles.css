@@ -1,183 +1,148 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
+/* Basic reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-}
-
-h1, h2, h3 {
-    color: #003366; /* Dark Blue */
-    text-align: center;
-    font-family: 'Georgia', serif;
-}
-
-a {
-    color: #003366;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-}
-
-/* Header Styles */
-.header {
-    background: linear-gradient(to right, #002244, #003366);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 5px solid #001122;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Main Content Styles */
-.main-content {
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.main-content p {
     line-height: 1.6;
-    margin: 10px 0;
+    margin: 0;
+    padding: 0;
 }
 
-/* Footer Styles */
-.footer {
-    background: #003366;
+/* Header styling */
+header {
+    background: #333;
     color: #fff;
+    padding: 1rem 0;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 5px solid #001122;
+    font-size: 1.5rem;
+    border-bottom: 3px solid #0000FF; /* Blue border */
 }
 
-/* Form Styles */
-form {
+/* Nav bar styling */
+nav ul {
+    list-style: none;
+    background: #444;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    border-bottom: 3px solid #0000FF; /* Blue border */
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: background 0.3s, color 0.3s;
+    border: 2px solid transparent; /* Blue border on hover */
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background: #555;
+    color: #fff;
+    border: 2px solid #0000FF; /* Blue border */
+}
+
+/* Section styling */
+section {
+    padding: 2rem;
+    margin: 2rem auto;
     background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    border: 3px solid #0000FF; /* Blue border */
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #0000FF; /* Blue border */
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+form label {
+    margin: 0.5rem 0 0.2rem;
+    font-weight: bold;
 }
 
 form input[type="text"],
-form input[type="password"],
 form input[type="email"],
-form textarea {
-    display: block;
+form input[type="password"],
+form input[type="file"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #0000FF; /* Blue border */
+    border-radius: 4px;
     width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 form button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(to right, #003366, #002244);
+    padding: 0.7rem;
+    background: #333;
     color: #fff;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid #0000FF; /* Blue border */
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1.2em;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s, border 0.3s;
 }
 
 form button:hover {
-    background: linear-gradient(to right, #002244, #001122);
-    transform: scale(1.05);
+    background: #555;
+    border: 2px solid #0000FF; /* Blue border */
 }
 
-/* Specific Page Styles */
-.login-form {
-    max-width: 400px;
-}
-
-.registration-form {
-    max-width: 400px;
-}
-
-.post-video-form textarea {
-    height: 150px;
-}
-
-.post-container {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-.post-title {
-    font-size: 2em;
-    margin-bottom: 15px;
-    color: #003366;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.post-content {
-    font-size: 1.2em;
-    line-height: 1.8;
-}
-
-/* Utility Classes */
-.text-center {
-    text-align: center;
-}
-
-.margin-top {
-    margin-top: 20px;
-}
-
-.margin-bottom {
-    margin-bottom: 20px;
-}
-
-/* Button Styles */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1em;
+/* Footer styling */
+footer {
+    background: #333;
     color: #fff;
-    background-color: #003366;
-    border: none;
-    border-radius: 5px;
     text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 2rem;
+    border-top: 3px solid #0000FF; /* Blue border */
 }
 
-.button:hover {
-    background-color: #002244;
-    transform: scale(1.05);
+/* Additional styling for viewpost.html */
+video {
+    display: block;
+    margin: 1rem 0;
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #0000FF; /* Blue border */
+    border-radius: 8px;
 }
 
-.button:active {
-    transform: scale(0.95);
+.comment-section {
+    margin-top: 2rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 3px solid #0000FF; /* Blue border */
 }
+
+.comment-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Media queries for responsiveness */
+@media (
