@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const container = document.createElement('div');
-    container.id = 'photo-container';
-    document.body.appendChild(container);
+    const container = document.getElementById('photo-container');
 
     fetch('https://jsonplaceholder.typicode.com/albums/2/photos')
         .then(response => response.json())
@@ -14,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const img = document.createElement('img');
                 img.src = photo.url;
                 img.alt = photo.title;
-                img.style.width = '150px';
-                img.style.height = '150px';
 
                 const title = document.createElement('p');
                 title.textContent = photo.title;
@@ -44,11 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePhotoCount(count) {
         let countElement = document.getElementById('photo-count');
-        if (!countElement) {
-            countElement = document.createElement('p');
-            countElement.id = 'photo-count';
-            document.body.appendChild(countElement);
-        }
         countElement.textContent = `Number of photos displayed: ${count}`;
     }
 });

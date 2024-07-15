@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+    const form = document.getElementById('registrationForm');
     const username = document.getElementById('username');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const tosCheckbox = document.getElementById('tos');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault();
         let valid = true;
 
         // Username validation
@@ -47,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('You must accept the Terms of Service and Privacy rules.');
         }
 
-        if (valid) {
+        if (!valid) {
+            event.preventDefault();
+        } else {
             alert('Form submitted successfully!');
             form.submit();
         }
