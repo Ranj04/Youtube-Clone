@@ -144,5 +144,45 @@ video {
     font-size: 1.2rem;
 }
 
+/* Add styles for the photo container */
+#photo-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows images to wrap to the next line if they overflow */
+    justify-content: space-around; /* Adjusts spacing between images */
+    gap: 10px; /* Space between images */
+}
+
+/* Style each photo div */
+.photo {
+    flex: 1 1 150px; /* Flex-grow, flex-shrink, and flex-basis */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    max-width: 150px; /* Max width for each photo div */
+}
+
+/* Style each image */
+.photo img {
+    width: 100%; /* Make image fill its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Style each title */
+.photo p {
+    text-align: center; /* Center the title text */
+    margin: 5px 0 0; /* Margin for the title */
+}
+
 /* Media queries for responsiveness */
-@media (
+@media (max-width: 600px) {
+    /* Styles for devices with a max-width of 600px */
+    .photo {
+        flex: 1 1 100px; /* Adjust flex-basis for smaller screens */
+        max-width: 100px; /* Adjust max width for smaller screens */
+    }
+}
+
+@media (max-width: 400px) {
+    /* Styles for devices with a max-width of 400px */
+    #photo-container {
+        flex-direction: column; /* Stack images vertically on very small screens */
+    }
+}
