@@ -1,10 +1,5 @@
-<section class="hero">
-  <h2>Welcome to YouTube Clone</h2>
-  <p>Share and discover amazing videos</p>
-</section>
-
 <section class="videos">
-  <h2>Latest Videos</h2>
+  <h2>All Videos</h2>
   {{#if posts.length}}
     <div class="video-grid">
       {{#each posts}}
@@ -16,12 +11,15 @@
             <div class="video-info">
               <h3>{{this.title}}</h3>
               <p class="author">By {{this.author}}</p>
+              {{#if this.description}}
+                <p class="description">{{this.description}}</p>
+              {{/if}}
             </div>
           </a>
         </div>
       {{/each}}
     </div>
   {{else}}
-    <p class="no-content">No videos yet. Be the first to <a href="/posts/create">post a video</a>!</p>
+    <p class="no-content">No videos available yet.</p>
   {{/if}}
 </section>

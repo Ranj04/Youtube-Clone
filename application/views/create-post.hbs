@@ -1,0 +1,18 @@
+<section class="form-container">
+  <h2>Post a Video</h2>
+  <form action="/posts/create" method="POST">
+    <div class="form-group">
+      <label for="title">Video Title</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="video_url">Video URL (YouTube embed URL)</label>
+      <input type="url" id="video_url" name="video_url" required placeholder="https://www.youtube.com/embed/...">
+    </div>
+    <div class="form-group">
+      <label for="description">Description (optional)</label>
+      <textarea id="description" name="description" rows="4"></textarea>
+    </div>
+    <button type="submit">Post Video</button>
+  </form>
+</section>

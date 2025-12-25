@@ -25,7 +25,7 @@ async function getConnection() {
 async function makeDatabase(connection) {
   //TODO make sure to change yourdbnamehere
   const [result, _] = await connection.query(
-    "CREATE DATABASE IF NOT EXISTS yourdbnamehere;"
+    "CREATE DATABASE IF NOT EXISTS youtube_clone;"
   );
   if (result && result.warningStatus > 0) {
     const [warningResult, _] = await connection.query("SHOW WARNINGS");
@@ -37,9 +37,13 @@ async function makeDatabase(connection) {
 
 async function makeUsersTable(connection) {
   const [result, _] = await connection.query(
-    // Users Table SQL Goes here
-    `
-    `
+    `CREATE TABLE IF NOT EXISTS Users (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      username VARCHAR(50) UNIQUE NOT NULL,
+      password VARCHAR(255) NOT NULL,
+      email VARCHAR(255) UNIQUE NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )`
   );
 
   if (result && result.warningStatus > 0) {
@@ -52,8 +56,15 @@ async function makeUsersTable(connection) {
 
 async function makePostsTable(connection) {
   const [result, _] = await connection.query(
-    // Posts Table SQL Goes here
-    ``
+    `CREATE TABLE IF NOT EXISTS Posts (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT NOT NULL,
+      title VARCHAR(255) NOT NULL,
+      video_url VARCHAR(2048) NOT NULL,
+      description TEXT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+    )`
   );
   if (result && result.warningStatus > 0) {
     const [warningResult, _] = await connection.query("SHOW WARNINGS");
@@ -65,9 +76,15 @@ async function makePostsTable(connection) {
 
 async function makeCommentsTable(connection) {
   const [result, _] = await connection.query(
-    // Comments Table SQL Goes here
-    ` 
-    `
+    `CREATE TABLE IF NOT EXISTS Comments (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      user_id INT NOT NULL,
+      post_id INT NOT NULL,
+      comment_text TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
+      FOREIGN KEY (post_id) REFERENCES Posts(id) ON DELETE CASCADE
+    )`
   );
   if (result && result.warningStatus > 0) {
     const [warningResult, _] = await connection.query("SHOW WARNINGS");
@@ -83,7 +100,7 @@ async function makeCommentsTable(connection) {
     connection = await getConnection();
     await makeDatabase(connection); // make DB
     //TODO make sure to change yourdbnamehere
-    await connection.query("USE yourdbnamehere"); // set new DB to the current DB
+    await connection.query("USE youtube_clone"); // set new DB to the current DB
     await makeUsersTable(connection); // try to make user table
     await makePostsTable(connection); // try to make posts table
     await makeCommentsTable(connection); // try to make comments table
