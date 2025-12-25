@@ -3,10 +3,11 @@
 const mysql = require("mysql2/promise");
 
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "0322",
-  database: "youtube_clone",
+  host: process.env.MYSQLHOST || "localhost",
+  user: process.env.MYSQLUSER || "root",
+  password: process.env.MYSQLPASSWORD || "0322",
+  database: process.env.MYSQLDATABASE || "youtube_clone",
+  port: process.env.MYSQLPORT || 3306,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

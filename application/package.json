@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "builddb": "node ./bin/dbloader",
-    "grade": "npm i && node ./bin/dbloader  && nodemon ./bin/www"
+    "grade": "npm i && node ./bin/dbloader && node ./bin/www"
   },
   "dependencies": {
     "colors": "^1.4.0",
