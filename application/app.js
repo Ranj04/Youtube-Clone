@@ -4,7 +4,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const { engine } = require("express-handlebars");
+const exphbs = require("express-handlebars");
 const createError = require("http-errors");
 
 // Import routes
@@ -17,7 +17,7 @@ const app = express();
 // View engine setup
 app.engine(
   "hbs",
-  engine({
+  exphbs.engine({
     extname: ".hbs",
     defaultLayout: "layout",
     layoutsDir: path.join(__dirname, "views/layouts"),
