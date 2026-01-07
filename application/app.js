@@ -18,6 +18,9 @@ const { requireAuth } = require("./middleware/auth");
 
 const app = express();
 
+// Trust Railway's proxy (required for secure cookies and correct IP detection)
+app.set("trust proxy", 1);
+
 // View engine setup
 const hbs = exphbs.create({
   extname: ".hbs",
