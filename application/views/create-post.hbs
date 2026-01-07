@@ -1,17 +1,18 @@
 <section class="form-container">
   <h2>Post a Video</h2>
   <form action="/posts/create" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <div class="form-group">
       <label for="title">Video Title</label>
-      <input type="text" id="title" name="title" required>
+      <input type="text" id="title" name="title" required maxlength="255">
     </div>
     <div class="form-group">
       <label for="video_url">Video URL (YouTube embed URL)</label>
-      <input type="url" id="video_url" name="video_url" required placeholder="https://www.youtube.com/embed/...">
+      <input type="url" id="video_url" name="video_url" required placeholder="https://www.youtube.com/embed/..." maxlength="2048">
     </div>
     <div class="form-group">
       <label for="description">Description (optional)</label>
-      <textarea id="description" name="description" rows="4"></textarea>
+      <textarea id="description" name="description" rows="4" maxlength="5000"></textarea>
     </div>
     <button type="submit">Post Video</button>
   </form>

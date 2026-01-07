@@ -25,8 +25,8 @@ A full-stack video sharing web application built with Node.js and Express.
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14+)
-- MySQL
+- Node.js (v18+)
+- MySQL (v8.0+)
 
 ### Installation
 
@@ -49,10 +49,18 @@ The app runs at `http://localhost:3000`
 
 ### Database Configuration
 
-Update credentials in `application/bin/dbloader` if needed:
-```javascript
-user: "root",
-password: "your_password"
+Configure your database using environment variables. Copy the example file:
+```bash
+cp application/.env.example application/.env
+```
+
+Edit `.env` with your MySQL credentials:
+```
+MYSQLHOST=localhost
+MYSQLUSER=root
+MYSQLPASSWORD=your_password
+MYSQLDATABASE=youtube_clone
+MYSQLPORT=3306
 ```
 
 ## Project Structure
@@ -73,6 +81,50 @@ password: "your_password"
 ├── index.html              # Static landing page
 └── styles.css              # Main stylesheet
 ```
+
+## Deploy to Railway
+
+### One-Click Deploy
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/youtube-clone)
+
+### Manual Deployment
+
+1. **Create a Railway Account**
+   - Go to [railway.app](https://railway.app) and sign up
+
+2. **Create New Project**
+   - Click "New Project" → "Deploy from GitHub repo"
+   - Connect your GitHub account and select this repository
+
+3. **Add MySQL Database**
+   - In your project, click "New" → "Database" → "Add MySQL"
+   - Railway automatically sets up the database and environment variables
+
+4. **Configure Environment Variables**
+   Railway auto-configures most variables. Add these if needed:
+   ```
+   NODE_ENV=production
+   ```
+
+5. **Deploy**
+   - Railway will automatically build and deploy your app
+   - The database tables are created automatically on first start
+
+6. **Get Your URL**
+   - Go to Settings → Domains → Generate Domain
+   - Your app is now live!
+
+### Environment Variables (Auto-configured by Railway)
+
+| Variable | Description |
+|----------|-------------|
+| `MYSQLHOST` | MySQL host address |
+| `MYSQLUSER` | MySQL username |
+| `MYSQLPASSWORD` | MySQL password |
+| `MYSQLDATABASE` | Database name |
+| `MYSQLPORT` | MySQL port |
+| `PORT` | Web server port |
 
 ## Screenshots
 

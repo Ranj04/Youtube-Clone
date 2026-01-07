@@ -13,15 +13,43 @@ function displayWarningMessage(warning) {
 }
 
 async function getConnection() {
-  return await mysql.createConnection({
-    host: process.env.MYSQLHOST || "localhost",
-    user: process.env.MYSQLUSER || "root",
-    password: process.env.MYSQLPASSWORD || "0322",
-    port: process.env.MYSQLPORT || 3306,
-  });
+  // Build connection config supporting Railway's variable formats
+  const config = {
+    host: process.env.MYSQLHOST || process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQLUSER || process.env.MYSQL_USER || "root",
+    password: process.env.MYSQLPASSWORD || process.env.MYSQL_PASSWORD || "",
+    port: parseInt(process.env.MYSQLPORT || process.env.MYSQL_PORT, 10) || 3306,
+  };
+
+  // Support Railway's MYSQL_URL connection string
+  if (process.env.MYSQL_URL || process.env.DATABASE_URL) {
+    const connectionString = process.env.MYSQL_URL || process.env.DATABASE_URL;
+    try {
+      const url = new URL(connectionString);
+      config.host = url.hostname;
+      config.port = parseInt(url.port, 10) || 3306;
+      config.user = url.username;
+      config.password = url.password;
+    } catch (e) {
+      console.error("Failed to parse database URL:", e.message);
+    }
+  }
+
+  return await mysql.createConnection(config);
 }
 
-const dbName = process.env.MYSQLDATABASE || "youtube_clone";
+// Support Railway's variable formats for database name
+let dbName = process.env.MYSQLDATABASE || process.env.MYSQL_DATABASE || "youtube_clone";
+
+// Extract from connection string if available
+if (process.env.MYSQL_URL || process.env.DATABASE_URL) {
+  try {
+    const url = new URL(process.env.MYSQL_URL || process.env.DATABASE_URL);
+    dbName = url.pathname.slice(1) || dbName;
+  } catch (e) {
+    // Use default
+  }
+}
 
 async function makeDatabase(connection) {
   const [result, _] = await connection.query(

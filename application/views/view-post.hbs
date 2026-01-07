@@ -16,8 +16,9 @@
 
   {{#if userId}}
     <form action="/posts/{{post.id}}/comments" method="POST" class="comment-form">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
       <div class="form-group">
-        <textarea name="comment_text" placeholder="Add a comment..." required></textarea>
+        <textarea name="comment_text" placeholder="Add a comment..." required maxlength="5000"></textarea>
       </div>
       <button type="submit">Post Comment</button>
     </form>

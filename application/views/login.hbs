@@ -4,6 +4,7 @@
     <p class="success-message">Registration successful! Please login.</p>
   {{/if}}
   <form action="/users/login" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>

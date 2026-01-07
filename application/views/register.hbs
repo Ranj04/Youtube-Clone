@@ -1,9 +1,10 @@
 <section class="form-container">
   <h2>Register</h2>
   <form action="/users/register" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" required minlength="3">
+      <input type="text" id="username" name="username" required minlength="3" maxlength="50" pattern="[a-zA-Z0-9_]+">
     </div>
     <div class="form-group">
       <label for="email">Email</label>
@@ -11,7 +12,8 @@
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required minlength="8">
+      <input type="password" id="password" name="password" required minlength="8"
+             title="Password must be at least 8 characters with uppercase, lowercase, and number">
     </div>
     <div class="form-group">
       <label for="confirmPassword">Confirm Password</label>
