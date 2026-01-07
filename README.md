@@ -25,7 +25,7 @@ A full-stack video sharing web application built with Node.js and Express.
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
+- Node.js (v20+)
 - MySQL (v8.0+)
 
 ### Installation
